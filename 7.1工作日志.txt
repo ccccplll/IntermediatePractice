@@ -1,0 +1,10 @@
+蔡灿：
+初步了解项目需求，安装配置echarts可视化工具，学习springboot相关操作，完成项目所需开发工具的安装和配置。
+张雪琳：
+初步了解项目需求，学习并在HBuilder X上完成底部tabbar组件，下载了微信开发者工具进行相应测试。下载echarts-5.5.1、IntelliJ IDEA CE。
+周楚坤:
+初步了解项目需求，了解机器学习课程内容，学习部分springboot基础内容，配置往后开发所需环境。
+薛文锐:
+初步了解项目需求，vroid建模制作了一个模型，了解模型面部捕捉相关方法，配置spring boot环境，学习了springboot相关操作，成功运行了第一个springboot项目。
+邓文秀:
+初步了解项目需求，配置springboot环境，运行了简单的springboot项目程序，尝试配置mybatis
