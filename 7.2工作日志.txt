@@ -1,0 +1,10 @@
+蔡灿：
+学习springboot基础知识，联系vue前端开发，讨论产品需求，编写项目启动文档。
+邓文秀:
+学习springboot和uniapp及前后端分离，讨论产品需求。
+周楚坤：
+springboot简例实践、小程序vue学习、讨论产品需求。
+张雪琳:
+学习springboot后端、uni-app（vue）前端；讨论产品需求及具体UI界面设计。
+薛文锐:
+springboot后端分离；uni-app前端学习；学习后端云布置相关操作；讨论产品需求及具体实现。
