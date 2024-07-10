@@ -1,0 +1,109 @@
+<!-- <template>
+  <div id="app">
+    <Users />
+  </div>
+</template>
+
+
+
+<script>
+import Users from './components/UserManagement.vue';
+
+export default {
+  name: 'App',
+  components: {
+    Users
+  }
+}
+</script> -->
+
+<template>
+	
+  <!--<div id="app">
+    <Applys />
+  </div>-->
+  <div class="app">
+      <!-- 头部 -->
+      <myHeader></myHeader>
+  
+      <el-container 
+        style="height: 100vh; 
+        border: 1px solid #eee; 
+        margin: 0;
+        border: 0;
+        padding: 0;">     <!-- style： 隐藏滚动条  去掉白边-->
+        <!-- 侧边栏 -->
+        <el-aside style="width: 200px;">
+          <asideNav></asideNav>
+        </el-aside>
+        <!-- 主页面 -->
+        <el-main>
+          <router-view></router-view>  
+        </el-main>
+      </el-container>
+    </div>
+</template>
+
+
+
+<script>
+import Applys from './components/ApplyManagement';
+import myHeader from "./components/myHeader";
+import AsideNav from "./components/AsideNav";
+import SystemIndexVue from './components/SystemIndex';
+import AdvertisingManagementVue from './components/AdvertisingManagement';
+import ConsultantManagementVue from './components/ConsultantManagement';
+import UserManagementVue from './components/UserManagement.vue';
+//import LoginVue from './components/Login.vue';
+//import RegisterVue from './components/Register.vue';
+/*import AnnouncementManagementVue from './components/AnnouncementManagement';
+import CommentManagementVue from './components/CommentManagement';
+import DataManagementVue from './components/DataManagement';
+import OrderManagementVue from './components/OrderManagement';
+import PersonInformationVue from './components/PersonInformation';
+import SystemManagementVue from './components/SystemManagement';
+import TestDataManagementVue from './components/TestDataManagement';
+import TestManagementVue from './components/TestManagement';*/
+
+
+export default {
+  name: 'App',
+  components: {
+    Applys,
+	myHeader,
+	AsideNav,
+	AdvertisingManagementVue,
+	SystemIndexVue,
+	ConsultantManagementVue,
+	UserManagementVue
+	//LoginVue,
+	//RegisterVue
+	/*AnnouncementManagementVue,
+	CommentManagementVue,
+	DataManagementVue,
+	OrderManagementVue,
+	PersonInformationVue,
+	SystemManagementVue,
+	TestDataManagementVue,
+	TestManagementVue*/
+  }
+}
+</script>
+
+<style>
+	html,
+	  body{
+	    height: 100%;
+	    margin: 0;
+	    border: 0;
+	    padding: 0;
+	  },
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
