@@ -3,30 +3,31 @@ package com.example.demo.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.demo.entity.Apply;
 import com.example.demo.entity.ApplyExt;
-import com.example.demo.entity.ApplyQueryParams;
-import com.example.demo.entity.Consultant;
-import lombok.Data;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.Date;
 import java.util.List;
+
 
 public interface ApplyMapper extends BaseMapper<Apply> {
     @Select("<script>" +
             "SELECT a.*, c.trueName as name " +
             "FROM apply a " +
-            "JOIN consultant c ON a.cid = c.id " +
+            "JOIN consultant c ON a.c_id = c.id " +
             "<where> " +
             " <if test='name != null'> AND c.trueName = #{name} </if>" +
-            " <if test='astate != null'> AND a.astate = #{astate} </if>" +
-            " <if test='cid != null'> AND a.cid = #{cid} </if>" +
+            " <if test='astate != null'> AND a.a_state = #{astate} </if>" +
+            " <if test='cid != null'> AND a.c_id = #{cid} </if>" +
             " <if test='id != null'> AND a.id = #{id} </if>" +
             " <if test='date != null'> AND a.date = #{date} </if>" +
             "</where> " +
             "LIMIT #{offset}, #{pageSize}" +
             "</script>")
+    @Results({
+            @Result(property = "id", column = "id"),
+            @Result(property = "astate", column = "a_state"),
+            @Result(property = "cid", column = "c_id"), // 这里将 c_id 列映射到 cid 属性
+    })
     List<ApplyExt> queryApplys(@Param("offset") int offset,
                                @Param("pageSize") int pageSize,
                                @Param("name") String name,
@@ -51,9 +52,9 @@ public interface ApplyMapper extends BaseMapper<Apply> {
 //                               @Param("c_id") Integer c_id,
 //                               @Param("date") Date date,
 //                               @Param("id") Integer id);
-    @Update("UPDATE apply SET astate = 'pass' WHERE id = #{id}")
+    @Update("UPDATE apply SET a_state = '已审批' WHERE id = #{id}")
     void passApplyById(@Param("id") int id);
-    @Update("UPDATE apply SET astate = 'unpass' WHERE id = #{id}")
+    @Update("UPDATE apply SET a_state = '不通过' WHERE id = #{id}")
     void unpassApplyById(@Param("id") int id);
     @Select("SELECT COUNT(*) FROM apply")
     int getTotalApplys();

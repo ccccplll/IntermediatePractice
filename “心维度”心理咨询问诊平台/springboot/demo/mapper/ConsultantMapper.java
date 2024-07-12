@@ -22,7 +22,7 @@ public interface ConsultantMapper extends BaseMapper<Consultant> {
             "</script>")
     List<Consultant> queryConsultants(@Param("offset") int offset,
                                       @Param("pageSize") int pageSize,
-                                      @Param("name") String name,
+                                      @Param("trueName") String trueName,
                                       @Param("city") String city,
                                       @Param("age") Integer age,
                                       @Param("sex") String sex,
