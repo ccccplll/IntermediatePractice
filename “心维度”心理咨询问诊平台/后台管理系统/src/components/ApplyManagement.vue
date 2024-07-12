@@ -116,7 +116,7 @@ export default {
 			    pageNum: 1,
 				pageSize: 5,			
 	            name: null,
-	            state: 'toBeReviewed',
+	            state: '待审批',
 				id: null,
 				c_id:null,
 				date:null,
@@ -124,13 +124,13 @@ export default {
 	  total: 0,//总条目数
       pageSizes: [5, 7, 10, 15],//每页显示条目数列表
       states: [{
-        value: 'pass',
-        label: '通过'
+        value: '已审批',
+        label: '已审批'
       }, {
-        value: 'toBeReviewed',
-        label: '待审核'
+        value: '待审批',
+        label: '待审批'
       },{
-        value: 'unpass',
+        value: '未通过',
         label: '未通过'
       },
 	  ],
@@ -147,7 +147,7 @@ export default {
 			    pageNum: 1,
 				pageSize: 5,			
 	            name: null,
-	            state: 'toBeReviewed',
+	            state: '待审批',
 				id: null,
 				c_id:null,
 	          };

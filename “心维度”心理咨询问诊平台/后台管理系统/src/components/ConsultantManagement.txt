@@ -2,15 +2,22 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator="/" style="padding-left: 10px;padding-bottom: 10px;font-size: 12px">
-      <el-breadcrumb-item :to="{ path: '/SystemIndex' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>用户管理</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/main' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>咨询师管理</el-breadcrumb-item>
     </el-breadcrumb>
+
     <!-- 用户列表卡片 -->
     <el-card class="box-card">
       <el-form :inline="true" :model="pageParam" class="demo-form-inline">
-
-        <el-form-item label="用户名" label-width="70px">
-          <el-input clearable v-model="pageParam.name" placeholder="请输入用户名"></el-input>
+	<el-form-item label="选择日期">
+	        <el-date-picker
+	          v-model="form.date"
+	          type="date"
+	          placeholder="选择日期">
+	        </el-date-picker>
+	      </el-form-item>
+        <el-form-item label="姓名" label-width="70px">
+          <el-input clearable v-model="pageParam.name" placeholder="请输入咨询师姓名"></el-input>
         </el-form-item>
 		<el-form-item label="ID" label-width="70px">
 		  <el-input clearable v-model="pageParam.id" placeholder="请输入ID"></el-input>
@@ -48,15 +55,10 @@
 		<el-form-item label="年龄" label-width="70px">
 		  <el-input clearable v-model="pageParam.age" placeholder="请输入年龄"></el-input>
 		</el-form-item>
-<!--        <el-form-item label-width="70px">
-          <el-radio v-model="formInline.radio" label="1">备选项</el-radio>
-          <el-radio v-model="formInline.radio" label="2">备选项</el-radio>
-          <el-radio v-model="formInline.radio" label="3">备选项</el-radio>
-          <el-button type="primary" @click="onSubmit">查询</el-button>
-        </el-form-item> -->
+
         <el-form-item style="margin-left: 10px">
           <el-button icon="el-icon-refresh" @click="onreset">重置</el-button>
-          <el-button type="primary" icon="el-icon-search" @click="getUsersList">查询</el-button>
+          <el-button type="primary" icon="el-icon-search" @click="getConsultantsList">查询</el-button>
           <el-button type="success" icon="el-icon-plus">添加</el-button>
           <el-button type="warning" icon="el-icon-download">导出</el-button>
         </el-form-item>
@@ -99,7 +101,7 @@
       </el-table>
      <el-pagination
         style="padding-top: 15px"
-        @size-change="getUsersList"
+        @size-change="getConsultantsList"
         @current-change="handleCurrentChange"
         :page-size.sync="pageParam.pageSize"
         :current-page.sync="pageParam.pageNum"
@@ -115,13 +117,20 @@
 </template>
 
 <script>
+	import { DatePicker } from 'element-ui';
 	import axios from 'axios'
 export default {
-  name: 'UserManagement',
+  name: 'ConsultantManagement',
+  components: {
+          'el-date-picker': DatePicker,
+        },
   data () {
     return {
+		 form: {
+		        date: '',
+		      },
       
-	   usersList: [],
+	   
 	        //分页设置
 	    pageParam: {
 			    pageNum: 1,
@@ -165,7 +174,7 @@ export default {
     }
   },
   mounted() {
-	  this.getUsersList();
+	  this.getConsultantsList();
     },
   methods: {
 	 onreset() {
@@ -179,26 +188,26 @@ export default {
 				id: null,
 	          };
 		
-	      this.getUsersList(); // 可选：重置后重新查询数据
+	      this.getConsultantsList(); // 可选：重置后重新查询数据
 	},
-	getUsersList() {
+	getConsultantsList() {
 		const queryParams = {
-		name: this.pageParam.name,
-		address: this.pageParam.address,
+		trueName: this.pageParam.name,
+		city: this.pageParam.city,
 		age: this.pageParam.age,
 		pageNum: this.pageParam.pageNum,
 		pageSize: this.pageParam.pageSize,
 		sex: this.pageParam.sex,
 		id: this.pageParam.id,
 		};
-	       axios.post('http://localhost:8081/User/search',queryParams)
+	       axios.post('http://localhost:8081/Consultant/search',queryParams)
 	               .then(response => {
 					console.log(this.pageParam.pageNum)
 					console.log(response.data);
 	                let resultMap = response.data;
 					
-					console.log(resultMap.usersList);
-	                this.tableData = resultMap.usersList;
+					console.log(resultMap.consultantsList);
+	                this.tableData = resultMap.consultantsList;
 	                this.total = resultMap.total;
 					console.log(resultMap.total);
 	               })
@@ -208,11 +217,11 @@ export default {
 	},
 	handleCurrentChange(page) {
 	    this.pageParam.pageNum = page;
-	    this.getUsersList();
+	    this.getConsultantsList();
 	},
 	handleDelete(index, row) {
 		const uid = row.id;
-	      axios.post(`http://localhost:8081/User/delete/${uid}`)
+	      axios.post(`http://localhost:8081/Consultant/delete/${uid}`)
 	        .then(response => {
 	          this.tableData.splice(index, 1);
 	          this.total--;

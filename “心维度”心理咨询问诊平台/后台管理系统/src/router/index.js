@@ -9,6 +9,13 @@ import ConsultantManagementVue from '../components/ConsultantManagement'
 import ApplyManagementVue from '../components/ApplyManagement'
 import AdvertisingManagementVue from '../components/AdvertisingManagement'
 import UserManagementVue from '../components/UserManagement'
+import AppointmentManagementVue from '../components/AppointmentManagement'
+import AnnouncementListVue from '../components/AnnouncementList';
+import AddAnnouncementVue from '../components/AddAnnouncement';
+import AnnouncementDetailVue from '../components/AnnouncementDetail';
+import TestManagementVue from '../components/TestManagement';
+import TestQuestionManagementVue from '../components/TestQuestionManagement';
+import TestQuestionListVue from '../components/TestQuestionList';
 //import LoginVue from '../components/Login'
 //import RegisterVue from '../components/Register'
 /*import AnnouncementManagementVue from '../components/AnnouncementManagement'
@@ -48,9 +55,44 @@ export default new Router({
 		component: ConsultantManagementVue
 	},
 	{
+		path: '/AppointmentManagement',
+		name: 'AppointmentManagement',
+		component: AppointmentManagementVue
+	},
+	{
 		path: '/UserManagement',
 		name: 'UserManagement',
 		component: UserManagementVue
+	},
+	{
+		path: '/AnnouncementList',
+		name: 'AnnouncementList',
+		component: AnnouncementListVue
+	},
+	{
+		path: '/AddAnnouncement',
+		name: 'AddAnnouncement',
+		component: AddAnnouncementVue
+	},
+	{
+	    path: '/announcement-detail/:id',
+		name: 'AnnouncementDetail',
+	    component: AnnouncementDetailVue,
+	},
+	{
+		path: '/TestManagement',
+		name: 'TestManagement',
+		component: TestManagementVue
+	},
+	{
+		path: '/TestQuestionManagement',
+		name: 'TestQuestionManagement',
+		component: TestQuestionManagementVue
+	},
+	{
+		path: '/TestQuestionList',
+		name: 'TestQuestionList',
+		component: TestQuestionListVue
 	},
 	/*{
 		path: '/LoginVue',

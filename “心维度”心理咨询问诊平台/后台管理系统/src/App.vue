@@ -15,6 +15,55 @@ export default {
     Users
   }
 }
+</script>
+
+<template>
+  <div id="app">
+    <Applys />
+  </div>
+</template>
+
+
+
+<script>
+import Applys from './components/ApplyManagement.vue';
+
+export default {
+  name: 'App',
+  components: {
+    Applys
+  }
+}
+</script>
+
+<style>
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style -->>
+
+<!-- <template>
+  <div id="app">
+    <Users />
+  </div>
+</template>
+
+
+
+<script>
+import Users from './components/UserManagement.vue';
+
+export default {
+  name: 'App',
+  components: {
+    Users
+  }
+}
 </script> -->
 
 <template>
@@ -54,16 +103,23 @@ import SystemIndexVue from './components/SystemIndex';
 import AdvertisingManagementVue from './components/AdvertisingManagement';
 import ConsultantManagementVue from './components/ConsultantManagement';
 import UserManagementVue from './components/UserManagement.vue';
+import AppointmentManagementVue from './components/AppointmentManagement';
+import AnnouncementListVue from './components/AnnouncementList';
+import AddAnnouncementVue from './components/AddAnnouncement';
+import AnnouncementDetailVue from './components/AnnouncementDetail';
+import TestManagementVue from './components/TestManagement';
+import TestQuestionManagementVue from './components/TestQuestionManagement';
+import TestQuestionListVue from './components/TestQuestionList';
 //import LoginVue from './components/Login.vue';
 //import RegisterVue from './components/Register.vue';
 /*import AnnouncementManagementVue from './components/AnnouncementManagement';
 import CommentManagementVue from './components/CommentManagement';
 import DataManagementVue from './components/DataManagement';
-import OrderManagementVue from './components/OrderManagement';
+
 import PersonInformationVue from './components/PersonInformation';
 import SystemManagementVue from './components/SystemManagement';
 import TestDataManagementVue from './components/TestDataManagement';
-import TestManagementVue from './components/TestManagement';*/
+*/
 
 
 export default {
@@ -75,17 +131,23 @@ export default {
 	AdvertisingManagementVue,
 	SystemIndexVue,
 	ConsultantManagementVue,
-	UserManagementVue
+	AppointmentManagementVue,
+	UserManagementVue,
+	AnnouncementListVue,
+	AddAnnouncementVue,
+	AnnouncementDetailVue,
+	TestManagementVue,
+	TestQuestionManagementVue,
+	TestQuestionListVue,
 	//LoginVue,
 	//RegisterVue
 	/*AnnouncementManagementVue,
 	CommentManagementVue,
 	DataManagementVue,
-	OrderManagementVue,
 	PersonInformationVue,
 	SystemManagementVue,
 	TestDataManagementVue,
-	TestManagementVue*/
+	*/
   }
 }
 </script>

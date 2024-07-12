@@ -69,12 +69,12 @@
           width="60">
         </el-table-column>
         <el-table-column
-          prop="cname"
+          prop="uname"
           label="咨询者昵称"
           width="100">
         </el-table-column>
 		<el-table-column
-		  prop="uname"
+		  prop="cname"
 		  label="咨询师姓名"
 		  width="100">
 		</el-table-column>
@@ -133,21 +133,24 @@ export default {
 	  total: 0,//总条目数
       pageSizes: [5, 8, 10, 15],//每页显示条目数列表
 	  states:[{
-		  value:'Scheduled',
-		  label:'预约中'
+		  value:'已预约',
+		  label:'已预约'
 	  },{
-		  value:'Comleted',
+		  value:'已完成',
 		  label:'已完成'
 	  },{
-		  value:'Canceled',
+		  value:'已取消',
 		  label:'已取消'
 	  }],
       consultWays: [{
-        value: 'Online',
-        label: '线上'
+        value: '在线咨询',
+        label: '在线咨询'
       }, {
-        value: 'InPerson',
-        label: '线下'
+        value: '电话咨询',
+        label: '电话咨询'
+      }, {
+        value: '视频咨询',
+        label: '视频咨询'
       }],
       value: '',
       tableData: [],

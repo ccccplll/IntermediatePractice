@@ -36,8 +36,10 @@
 		                <span>测评管理</span>
 		              </template>
 		              <el-menu-item-group>
-		                <el-menu-item index="/TestManagement">测评试题管理</el-menu-item>
+		                <el-menu-item index="/TestManagement">测评结果管理</el-menu-item>
 		                <el-menu-item index="/TestDataManagement">测评数据管理</el-menu-item>
+						<el-menu-item index="/TestQuestionManagement">测评问题管理</el-menu-item>
+						<el-menu-item index="/TestQuestionList">测评问题列表</el-menu-item>
 		              </el-menu-item-group>
 		  </el-submenu>
 
@@ -45,9 +47,9 @@
             <i class="el-icon-document"></i>
             <span slot="title">审核管理</span>
           </el-menu-item>
-          <el-menu-item index="/OrderManagement">
+          <el-menu-item index="/AppointmentManagement">
             <i class="el-icon-setting"></i>
-            <span slot="title">订单管理</span>
+            <span slot="title">预约管理</span>
           </el-menu-item>
 		  <el-submenu>
 		              <template slot="title">
@@ -56,11 +58,20 @@
 		              </template>
 		              <el-menu-item-group>
 		                <el-menu-item index="/CommentManagement">评论管理</el-menu-item>
-		                <el-menu-item index="/AnnouncementManagement">公告管理</el-menu-item>
+		            
 						<el-menu-item index="/AdvertisingManagement">广告管理</el-menu-item>
 		              </el-menu-item-group>
 		  </el-submenu>
-		  
+		  <el-submenu>
+		              <template slot="title">
+		                <i class="el-icon-location"></i>
+		                <span>公告管理</span>
+		              </template>
+		              <el-menu-item-group>
+		                <el-menu-item index="/AnnouncementList">公告列表</el-menu-item>
+		                <el-menu-item index="/AddAnnouncement">添加公告</el-menu-item>
+		              </el-menu-item-group>
+		  </el-submenu>
           <el-menu-item index="/DataManagement">
             <i class="el-icon-setting"></i>
             <span slot="title">数据中心</span>

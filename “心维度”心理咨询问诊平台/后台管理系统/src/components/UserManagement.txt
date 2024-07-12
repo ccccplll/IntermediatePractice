@@ -2,7 +2,7 @@
   <div>
     <!-- 面包屑导航 -->
     <el-breadcrumb separator="/" style="padding-left: 10px;padding-bottom: 10px;font-size: 12px">
-      <el-breadcrumb-item :to="{ path: '/SystemIndex' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/main' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>用户管理</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 用户列表卡片 -->
@@ -184,7 +184,7 @@ export default {
 	getUsersList() {
 		const queryParams = {
 		name: this.pageParam.name,
-		address: this.pageParam.address,
+		city: this.pageParam.city,
 		age: this.pageParam.age,
 		pageNum: this.pageParam.pageNum,
 		pageSize: this.pageParam.pageSize,
