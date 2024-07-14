@@ -16,6 +16,8 @@ import AnnouncementDetailVue from '../components/AnnouncementDetail';
 import TestManagementVue from '../components/TestManagement';
 import TestQuestionManagementVue from '../components/TestQuestionManagement';
 import TestQuestionListVue from '../components/TestQuestionList';
+import TestQuestionDetailVue from '../components/TestQuestionDetail';
+import UserDetailVue from '../components/UserDetail';
 //import LoginVue from '../components/Login'
 //import RegisterVue from '../components/Register'
 /*import AnnouncementManagementVue from '../components/AnnouncementManagement'
@@ -26,7 +28,6 @@ import PersonInformationVue from '../components/PersonInformation'
 import SystemManagementVue from '../components/SystemManagement'
 import TestDataManagementVue from '../components/TestDataManagement'
 import TestManagementVue from '../components/TestManagement'*/
-
 export default new Router({
   routes: [
     {
@@ -93,6 +94,16 @@ export default new Router({
 		path: '/TestQuestionList',
 		name: 'TestQuestionList',
 		component: TestQuestionListVue
+	},	
+	{
+		path: '/TestQuestionDetail/:id',
+		name: 'TestQuestionDetail',
+		component: TestQuestionDetailVue
+	}, 
+	{
+		path: '/UserDetail/:id',
+		name: 'UserDetail',
+		component: UserDetailVue
 	},
 	/*{
 		path: '/LoginVue',

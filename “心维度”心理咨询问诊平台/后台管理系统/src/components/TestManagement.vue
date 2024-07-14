@@ -17,9 +17,23 @@
         <el-form-item label="分数" label-width="70px">
           <el-input clearable v-model="pageParam.score" placeholder="请输入分数"></el-input>
         </el-form-item>
-        <el-form-item label="情况" label-width="70px">
+<!--        <el-form-item label="心理状况" label-width="70px">
           <el-input clearable v-model="pageParam.condition" placeholder="请输入条件"></el-input>
-        </el-form-item>
+        </el-form-item> -->
+		
+		<el-form-item label="心理状况" label-width="70px">
+		  <el-select clearable v-model="pageParam.condition" placeholder="请选择">
+		    <el-option
+		      v-for="item in conditions"
+		      :key="item.value"
+		      :label="item.label"
+		      :value="item.value">
+		      <span style="float: left">{{ item.label }}</span>
+		      <span style="float: right; color: #8492a6; font-size: 13px">{{ item.value }}</span>
+		    </el-option>
+		  </el-select>
+		</el-form-item>
+		
         <el-form-item style="margin-left: 10px">
           <el-button icon="el-icon-refresh" @click="onreset">重置</el-button>
           <el-button type="primary" icon="el-icon-search" @click="getTestResults">查询</el-button>
@@ -32,7 +46,7 @@
         <el-table-column prop="id" label="ID" width="60"></el-table-column>
         <el-table-column prop="name" label="用户昵称" width="80"></el-table-column>
         <el-table-column prop="score" label="分数" width="80"></el-table-column>
-        <el-table-column prop="condition" label="情况"></el-table-column>
+        <el-table-column prop="condition" label="心理状况"></el-table-column>
 		<el-table-column width="100"
 		          prop="time"
 		          label="时间"
@@ -73,6 +87,19 @@ export default {
         id: null,
         condition: null,
       },
+	  conditions:[{
+	  		  value:'差',
+	  		  label:'差'
+	  },{
+	  		  value:'一般',
+	  		  label:'一般'
+	  },{
+	  		  value:'良好',
+	  		  label:'良好'
+	  },{
+	  		  value:'优秀',
+	  		  label:'优秀'
+	  }],
       total: 0,
       pageSizes: [5, 10, 15],
       tableData: [],

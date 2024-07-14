@@ -65,10 +65,17 @@
       <el-table :data="tableData"
         border
         style="width: 100%; height: 400px">
+		<el-table-column
+		  prop="id"
+		  label="ID"
+		  width="60">
+		</el-table-column>
         <el-table-column
-          prop="id"
-          label="ID"
-          width="60">
+              label="头像"
+              width="100">
+              <template slot-scope="scope">
+                <img :src="scope.row.avatar" alt="头像" style="width: 50px; height: 50px; border-radius: 50%;">
+              </template>
         </el-table-column>
         <el-table-column
           prop="name"
@@ -89,6 +96,12 @@
           prop="city"
           label="城市">
         </el-table-column>
+		<el-table-column width="100"
+		      label="详情">
+		      <template slot-scope="scope">
+		        <el-button @click="onDetail(scope.row)">详情</el-button>
+		      </template>
+		</el-table-column>
 		<el-table-column
 		  label="删除"
 		  width="100">
@@ -125,7 +138,7 @@ export default {
 	        //分页设置
 	    pageParam: {
 			    pageNum: 1,
-				pageSize: 5,			
+				pageSize: 4,			
 	            name: null,
 	            city: null,
 	            age: null,
@@ -133,7 +146,7 @@ export default {
 				id: null,
 	          },
 	  total: 0,//总条目数
-      pageSizes: [5, 8, 10, 15],//每页显示条目数列表
+      pageSizes: [4, 8, 10, 15],//每页显示条目数列表
 	  sexs:[{
 		  value:'male',
 		  label:'男'
@@ -157,7 +170,7 @@ export default {
         value: 'Shenzhen',
         label: '深圳'
       }, {
-        value: 'Guangzhou',
+        value: '广州',
         label: '广州'
       }],
       value: '',
@@ -171,7 +184,7 @@ export default {
 	 onreset() {
 	      this. pageParam= {
 			    pageNum:1,
-	            pageSize: 5,
+	            pageSize: 4,
 	            name: null,
 	            city: null,
 	            age: null,
@@ -221,6 +234,14 @@ export default {
 	        .catch(err => {
 	          alert(err);
 	        });
+	},
+	onDetail(row) {
+		console.log(row.id); // 调试：打印 row.id 以确保获取正确
+		      if (row && row.id) {
+		        this.$router.push(`/UserDetail/${row.id}`);
+		      } else {
+		        console.error('Row ID is missing');
+		      }
 	},
     onSubmit () {
       console.log('submit!')

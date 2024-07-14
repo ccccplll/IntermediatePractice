@@ -61,6 +61,13 @@
           label="姓名"
           width="100">
         </el-table-column>
+		<el-table-column
+		      label="审核资料"
+		      width="100">
+		      <template slot-scope="scope">
+		        <img :src="scope.row.image" alt="审核资料" style="width: 50px; height: 50px; border-radius: 50%;">
+		      </template>
+		</el-table-column>
         <el-table-column
           prop="astate"
           label="审核情况">

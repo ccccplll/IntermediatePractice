@@ -34,8 +34,14 @@
         <el-table-column
           prop="questionContext"
           label="问题描述"
-          width="200">
+          >
         </el-table-column>
+		<el-table-column width="100"
+		      label="详情">
+		      <template slot-scope="scope">
+		        <el-button @click="onDetail(scope.row)">详情</el-button>
+		      </template>
+		    </el-table-column>
 		<el-table-column width="100"
 		          prop="date"
 		          label="日期"
@@ -65,7 +71,7 @@
 	
 export default {
 
-  name: 'TestQuestionManagement',
+  name: 'TestQuestionList',
   components: {
 	        'el-date-picker': DatePicker,
 	      },
@@ -137,7 +143,16 @@ export default {
 	    },
     onSubmit () {
       console.log('submit!')
-    },
+    },//, params: { id: row.id }
+	onDetail(row) {
+		console.log(row.id); // 调试：打印 row.id 以确保获取正确
+		      if (row && row.id) {
+		        this.$router.push(`/TestQuestionDetail/${row.id}`);
+		      } else {
+		        console.error('Row ID is missing');
+		      }
+	      // this.$router.push('/TestQuestionDetail/${row.id}');
+	    },
 	onInsert() {
 	          this.$router.push('/TestQuestionManagement'); // 跳转到 TestQuestionManagement 页面
 	    },

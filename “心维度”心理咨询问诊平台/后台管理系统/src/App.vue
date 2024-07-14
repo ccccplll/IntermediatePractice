@@ -110,6 +110,8 @@ import AnnouncementDetailVue from './components/AnnouncementDetail';
 import TestManagementVue from './components/TestManagement';
 import TestQuestionManagementVue from './components/TestQuestionManagement';
 import TestQuestionListVue from './components/TestQuestionList';
+import TestQuestionDetailVue from './components/TestQuestionDetail.vue';
+import UserDetailVue from './components/UserDetail.vue';
 //import LoginVue from './components/Login.vue';
 //import RegisterVue from './components/Register.vue';
 /*import AnnouncementManagementVue from './components/AnnouncementManagement';
@@ -139,6 +141,8 @@ export default {
 	TestManagementVue,
 	TestQuestionManagementVue,
 	TestQuestionListVue,
+	TestQuestionDetailVue,
+	UserDetailVue,
 	//LoginVue,
 	//RegisterVue
 	/*AnnouncementManagementVue,

@@ -72,6 +72,13 @@
           label="ID"
           width="60">
         </el-table-column>
+		<el-table-column
+		      label="头像"
+		      width="100">
+		      <template slot-scope="scope">
+		        <img :src="scope.row.avatar" alt="头像" style="width: 50px; height: 50px; border-radius: 50%;">
+		      </template>
+		</el-table-column>
         <el-table-column
           prop="trueName"
           label="姓名"
@@ -91,6 +98,14 @@
           prop="city"
           label="城市">
         </el-table-column>
+		<el-table-column
+		  prop="certificationStatus"
+		  label="认证状况">
+		</el-table-column>
+		<el-table-column
+		  prop="accumulatedHour"
+		  label="累计小时">
+		</el-table-column>
 		<el-table-column
 		  label="删除"
 		  width="100">
@@ -134,7 +149,7 @@ export default {
 	        //分页设置
 	    pageParam: {
 			    pageNum: 1,
-				pageSize: 5,			
+				pageSize: 4,			
 	            name: null,
 	            city: null,
 	            age: null,
@@ -142,7 +157,7 @@ export default {
 				id: null,
 	          },
 	  total: 0,//总条目数
-      pageSizes: [5, 8, 10, 15],//每页显示条目数列表
+      pageSizes: [4, 8, 10, 15],//每页显示条目数列表
 	  sexs:[{
 		  value:'male',
 		  label:'男'
@@ -180,7 +195,7 @@ export default {
 	 onreset() {
 	      this. pageParam= {
 			    pageNum:1,
-	            pageSize: 5,
+	            pageSize: 4,
 	            name: null,
 	            city: null,
 	            age: null,

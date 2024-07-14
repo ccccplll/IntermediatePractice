@@ -37,8 +37,8 @@
 		              </template>
 		              <el-menu-item-group>
 		                <el-menu-item index="/TestManagement">测评结果管理</el-menu-item>
-		                <el-menu-item index="/TestDataManagement">测评数据管理</el-menu-item>
-						<el-menu-item index="/TestQuestionManagement">测评问题管理</el-menu-item>
+<!-- 		                <el-menu-item index="/TestDataManagement">测评数据管理</el-menu-item> -->
+<!-- 						<el-menu-item index="/TestQuestionManagement">测评问题管理</el-menu-item> -->
 						<el-menu-item index="/TestQuestionList">测评问题列表</el-menu-item>
 		              </el-menu-item-group>
 		  </el-submenu>
