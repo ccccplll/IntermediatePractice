@@ -11,9 +11,10 @@ import java.util.List;
 
 public interface ApplyMapper extends BaseMapper<Apply> {
     @Select("<script>" +
-            "SELECT a.*, c.trueName as name " +
+            "SELECT a.*, c.trueName as name, cer.image as image " +
             "FROM apply a " +
             "JOIN consultant c ON a.c_id = c.id " +
+            "JOIN certification cer ON a.id = cer.a_id " +
             "<where> " +
             " <if test='name != null'> AND c.trueName = #{name} </if>" +
             " <if test='astate != null'> AND a.a_state = #{astate} </if>" +
@@ -54,6 +55,8 @@ public interface ApplyMapper extends BaseMapper<Apply> {
 //                               @Param("id") Integer id);
     @Update("UPDATE apply SET a_state = '已审批' WHERE id = #{id}")
     void passApplyById(@Param("id") int id);
+    @Update("UPDATE consultant c INNER JOIN apply a ON c.id = a.c_id SET c.certificationStatus = '已认证' WHERE a.id = #{id}")
+    void  setConsultantCertificationStatus(@Param("id") int id);
     @Update("UPDATE apply SET a_state = '不通过' WHERE id = #{id}")
     void unpassApplyById(@Param("id") int id);
     @Select("SELECT COUNT(*) FROM apply")

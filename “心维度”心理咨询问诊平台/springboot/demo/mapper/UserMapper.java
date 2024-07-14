@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.demo.entity.Consultant;
 import com.example.demo.entity.User;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -29,4 +31,10 @@ public interface UserMapper extends BaseMapper<User> {
                           @Param("id") Integer id);
     @Select("SELECT COUNT(*) FROM user")
     int getTotalUsers();
+    @Select("SELECT id, name, city, age, password, u_condition, sex, email, phoneNumber, avatar FROM user WHERE id = #{id}")
+    @Results({
+            @Result(property = "uCondition", column = "u_condition"),
+    })
+    User getUserById(int id);
+
 }

@@ -1,9 +1,10 @@
 package com.example.demo.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.util.Date;
-
+@TableName("testquestions")
 @Data
 public class TestQuestion {
     private Integer id;

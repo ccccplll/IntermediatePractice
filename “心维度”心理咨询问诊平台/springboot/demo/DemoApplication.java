@@ -12,6 +12,9 @@ public class DemoApplication {
 	public static void main(String[] args) {
 		System.setProperty("debug", "true");
 		SpringApplication.run(DemoApplication.class, args);
+		Chat chat = new Chat();
+		boolean result = chat.getAccessToken();
+		System.out.println(result);
 	}
 
 }

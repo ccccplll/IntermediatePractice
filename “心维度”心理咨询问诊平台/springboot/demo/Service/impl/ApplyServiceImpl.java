@@ -36,4 +36,9 @@ public class ApplyServiceImpl implements ApplyService {
     public void unpassApplyById(Integer id) {
         applyMapper.unpassApplyById(id);
     }
+
+    @Override
+    public void setConsultantCertificationStatus(Integer id) {
+        applyMapper.setConsultantCertificationStatus(id);
+    }
 }

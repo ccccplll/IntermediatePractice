@@ -1,10 +1,9 @@
 package com.example.demo.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.demo.Service.TestQuestionService;
-import com.example.demo.entity.TestExt;
-import com.example.demo.entity.TestQueryParams;
-import com.example.demo.entity.TestQuestion;
-import com.example.demo.entity.TestQuestionQueryParams;
+import com.example.demo.entity.*;
+import com.example.demo.mapper.TestQuestionMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +21,9 @@ public class TestQuestionController {
     @Autowired
     private TestQuestionService testQuestionService;
 
+    @Autowired
+    private TestQuestionMapper testQuestionMapper;
+
     @PostMapping("/addTestQuestion")
     public ResponseEntity<String> addTestQuestion(@RequestBody TestQuestion testQuestion) {
         try {
@@ -30,6 +32,16 @@ public class TestQuestionController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error adding test question");
         }
+    }
+
+    @GetMapping("/list/{id}")
+    public List<TestQuestion> list(@PathVariable int id) {
+        // 构建查询条件
+        QueryWrapper<TestQuestion> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id", id);
+
+        // 执行查询
+        return testQuestionMapper.selectList(queryWrapper);
     }
 
     @PostMapping("/search")

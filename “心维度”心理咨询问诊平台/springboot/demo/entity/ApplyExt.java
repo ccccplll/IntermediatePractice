@@ -14,4 +14,5 @@ import java.util.Date;
 public class ApplyExt extends Apply{
 
     private String name;
+    private String image;
 }

@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.demo.Service.UserService;
-import com.example.demo.entity.User;
-import com.example.demo.entity.UserQueryParams;
+import com.example.demo.entity.*;
 import com.example.demo.mapper.UserMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +19,8 @@ import java.util.Map;
 @CrossOrigin
 @RequestMapping("/User")
 public class UserController {
-
+    @Autowired
+    TestController testService;
     @Autowired
     UserMapper userMapper;
     @Autowired
@@ -43,7 +44,26 @@ public class UserController {
         }
     }
 
+    @GetMapping("/getUser/{id}")
+    public User list(@PathVariable int id) {
+        // 构建查询条件
+//        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+//        queryWrapper.eq("id", id);
 
+        // 执行查询
+        return userMapper.getUserById(id);
+    }
+//    @GetMapping("/getUserTest/{id}")
+//    public List<TestExt> getTest(@PathVariable int id) {
+//        // 构建查询条件
+////        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+////        queryWrapper.eq("id", id);
+//        TestQueryParams params = new TestQueryParams();
+//        params.setId(id);
+//        List<TestExt> testList = (List<TestExt>) testService.queryTests(params);
+//        // 执行查询
+//        return userMapper.getUserById(id);
+//    }
    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     @PostMapping("/search")
    public Map<String, Object> queryUsers(@RequestBody UserQueryParams params) {

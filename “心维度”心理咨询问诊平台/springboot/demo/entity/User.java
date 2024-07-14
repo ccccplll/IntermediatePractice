@@ -14,9 +14,8 @@ public class User {
     private String name;
     private String city;
     private Integer age;
-    private String preference;
     private String password;
-    private String u_condition;
+    private String uCondition;
     private String sex;
     private String email;
     private String phoneNumber;

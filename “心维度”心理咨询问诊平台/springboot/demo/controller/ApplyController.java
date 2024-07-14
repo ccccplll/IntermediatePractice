@@ -44,6 +44,7 @@ public class ApplyController {
     public ResponseEntity<String> passUser(@PathVariable  int id) {
         try {
             applyService.passApplyById(id);
+            applyService.setConsultantCertificationStatus(id);
             return ResponseEntity.ok("Apply pass successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());

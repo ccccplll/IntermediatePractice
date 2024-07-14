@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.demo.entity.TestQuestion;
 import com.example.demo.entity.User;
 import org.apache.ibatis.annotations.Insert;
@@ -12,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 @Mapper
-public interface TestQuestionMapper {
+public interface TestQuestionMapper extends BaseMapper<TestQuestion> {
 
     @Insert("INSERT INTO testquestions (date, score_a, score_b, score_c, score_d, question_context, A, B, C, D) " +
             "VALUES (#{date}, #{scoreA}, #{scoreB}, #{scoreC}, #{scoreD}, #{questionContext}, #{a}, #{b}, #{c}, #{d})")
