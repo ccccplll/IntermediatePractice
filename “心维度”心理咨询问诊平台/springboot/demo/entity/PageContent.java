@@ -10,9 +10,11 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("apply")
-public class ApplyExt extends Apply{
-
-    private String name;
-
+@TableName("pagecontent")
+public class PageContent {
+    private Integer id;
+    private String content;
+    private Date createTime;
+    private Integer tid;
+    private Integer uid;
 }

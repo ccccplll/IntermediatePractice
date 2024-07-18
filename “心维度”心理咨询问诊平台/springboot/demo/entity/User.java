@@ -20,6 +20,7 @@ public class User {
     private String email;
     private String phoneNumber;
     private String avatar;
+    private String seemessage;
 
     public User(String name, Integer age, String city) {
         this.name=name;

@@ -10,12 +10,15 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("apply")
-public class Apply {
-
+@TableName("essay")
+public class Essay {
     private Integer id;
-    private String astate;
     private Integer cid;
-    private Date date;
+    private String content;
+    private Integer good;
+    private String state;
+    private Date time;
+    private String title;
+    private String type;
     private String image;
 }

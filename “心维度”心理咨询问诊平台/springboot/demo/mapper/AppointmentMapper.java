@@ -37,4 +37,6 @@ public interface AppointmentMapper extends BaseMapper<Appointment> {
     List<AppointmentExt> queryAppointments(int offset, Integer pageSize, String cname, String uname, Integer id, String consultWay, Timestamp createTime, String state);
     @Select("SELECT COUNT(*) FROM appointment")
     int getTotalAppointments();
+    @Select("SELECT u_id FROM appointment WHERE p_id = #{pid} AND state = '待完成' " )
+    Integer getUid(int pid);
 }

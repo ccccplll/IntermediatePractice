@@ -10,20 +10,34 @@ import java.util.List;
 
 
 public interface ApplyMapper extends BaseMapper<Apply> {
-    @Select("<script>" +
-            "SELECT a.*, c.trueName as name, cer.image as image " +
-            "FROM apply a " +
-            "JOIN consultant c ON a.c_id = c.id " +
-            "JOIN certification cer ON a.id = cer.a_id " +
-            "<where> " +
-            " <if test='name != null'> AND c.trueName = #{name} </if>" +
-            " <if test='astate != null'> AND a.a_state = #{astate} </if>" +
-            " <if test='cid != null'> AND a.c_id = #{cid} </if>" +
-            " <if test='id != null'> AND a.id = #{id} </if>" +
-            " <if test='date != null'> AND a.date = #{date} </if>" +
-            "</where> " +
-            "LIMIT #{offset}, #{pageSize}" +
-            "</script>")
+//    @Select("<script>" +
+//            "SELECT a.*, c.trueName as name, GROUP_CONCAT(cer.image) as images " +
+//            "FROM apply a " +
+//            "JOIN consultant c ON a.c_id = c.id " +
+//            "JOIN certification cer ON a.id = cer.a_id " +
+//            "<where> " +
+//            " <if test='name != null'> AND c.trueName = #{name} </if>" +
+//            " <if test='astate != null'> AND a.a_state = #{astate} </if>" +
+//            " <if test='cid != null'> AND a.c_id = #{cid} </if>" +
+//            " <if test='id != null'> AND a.id = #{id} </if>" +
+//            " <if test='date != null'> AND a.date = #{date} </if>" +
+//            "</where> " +
+//            "GROUP BY a.id, a.a_state, a.c_id, c.trueName " +
+//            "LIMIT #{offset}, #{pageSize}" +
+//            "</script>")
+@Select("<script>" +
+        "SELECT a.*, c.trueName as name  " +
+        "FROM apply a " +
+        "JOIN consultant c ON a.c_id = c.id " +
+        "<where> " +
+        " <if test='name != null'> AND c.trueName = #{name} </if>" +
+        " <if test='astate != null'> AND a.a_state = #{astate} </if>" +
+        " <if test='cid != null'> AND a.c_id = #{cid} </if>" +
+        " <if test='id != null'> AND a.id = #{id} </if>" +
+        " <if test='date != null'> AND a.date = #{date} </if>" +
+        "</where> " +
+        "LIMIT #{offset}, #{pageSize}" +
+        "</script>")
     @Results({
             @Result(property = "id", column = "id"),
             @Result(property = "astate", column = "a_state"),

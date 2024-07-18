@@ -6,13 +6,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("apply")
-public class ApplyExt extends Apply{
-
-    private String name;
-
+@TableName("comment")
+public class Comment {
+    private Integer id;
+    private Integer appointId;
+    private Integer cid;
+    private String content;
+    private double score;
+    private Date time;
 }

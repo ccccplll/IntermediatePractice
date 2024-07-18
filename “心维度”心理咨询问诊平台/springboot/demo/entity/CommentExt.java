@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TestExt extends Test{
-    private String name;
+public class CommentExt extends Comment{
+    private String uname;
+    private String cname;
 }

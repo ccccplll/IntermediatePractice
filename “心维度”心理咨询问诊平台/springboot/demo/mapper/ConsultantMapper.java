@@ -5,6 +5,7 @@ import com.example.demo.entity.Consultant;
 import com.example.demo.entity.User;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -29,4 +30,6 @@ public interface ConsultantMapper extends BaseMapper<Consultant> {
                                       @Param("id") Integer id);
     @Select("SELECT COUNT(*) FROM consultant")
     int getTotalConsultants();
+    @Select("SELECT phoneNumber FROM consultant WHERE id = #{id}")
+    String getPhoneNumberById(Integer id);
 }

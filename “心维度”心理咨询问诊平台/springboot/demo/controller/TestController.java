@@ -30,6 +30,8 @@ public class TestController {
             List<TestExt> testsList = testService.queryTests(params);
             int total = testService.getTotalTests();
             System.out.println(testsList);
+            System.out.println(params.getUid());
+            System.out.println(params.getId());
             resultMap.put("testsList", testsList);
             resultMap.put("total", total);
         } catch (Exception e) {
@@ -38,5 +40,4 @@ public class TestController {
         }
         return resultMap;
     }
-
 }

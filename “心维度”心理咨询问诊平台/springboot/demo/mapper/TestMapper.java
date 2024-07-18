@@ -18,6 +18,7 @@ public interface TestMapper extends BaseMapper<Test> {
             "FROM test t " +
             "JOIN user u ON t.u_id = u.id " +
             "<where> " +
+            " <if test='uid != null'> AND t.U_id = #{uid} </if>" +
             " <if test='name != null'> AND u.name = #{name} </if>" +
             " <if test='id != null'> AND t.id = #{id} </if>" +
             " <if test='condition != null'> AND t.condition = #{condition} </if>" +
@@ -27,12 +28,15 @@ public interface TestMapper extends BaseMapper<Test> {
             "</script>")
     @Results({
             @Result(property = "condition", column = "t_condition"),
+            @Result(property = "uid", column = "u_id"),
     })
     List<TestExt> queryTests(@Param("offset") int offset,
-                              @Param("pageSize") int pageSize,
-                              @Param("name") String name,
-                              @Param("condition") String condition,
-                              @Param("id") Integer id);
+                             @Param("pageSize") int pageSize,
+                             @Param("name") String name,
+                             @Param("condition") String condition,
+                             @Param("id") Integer id,
+                             @Param("uid") Integer uid
+                              );
     @Select("SELECT COUNT(*) FROM test")
     int getTotalTests();
 }

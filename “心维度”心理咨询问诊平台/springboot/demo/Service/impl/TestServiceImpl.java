@@ -18,12 +18,16 @@ public class TestServiceImpl implements TestService {
     @Override
     public List<TestExt> queryTests(TestQueryParams params) {
         int offset = (params.getPageNum() - 1) * params.getPageSize();
+        System.out.println(params.getUid());
+
+        System.out.println(params);
         return testMapper.queryTests(
                 offset,
                 params.getPageSize(),
                 params.getName(),
                 params.getCondition(),
-                params.getId()
+                params.getId(),
+                params.getUid()
         );
     }
 

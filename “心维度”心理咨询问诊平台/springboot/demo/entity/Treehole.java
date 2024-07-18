@@ -5,17 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("apply")
-public class Apply {
-
+@TableName("treehole")
+public class Treehole {
     private Integer id;
-    private String astate;
     private Integer cid;
-    private Date date;
-    private String image;
+    private Integer uid;
+    private String send;
+    private String receive;
+    private String uname;
+    private String cname;
 }

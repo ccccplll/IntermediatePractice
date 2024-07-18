@@ -3,10 +3,7 @@ package com.example.demo.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.demo.entity.Consultant;
 import com.example.demo.entity.User;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -37,4 +34,8 @@ public interface UserMapper extends BaseMapper<User> {
     })
     User getUserById(int id);
 
+    @Update("UPDATE user SET seemessage = '未看过' WHERE id = #{id}")
+    void  setUserSeeMessageState(@Param("id") int id);
+    @Select("SELECT phoneNumber FROM consultant WHERE id = #{id}")
+    String getPhoneNumberById(Integer id);
 }

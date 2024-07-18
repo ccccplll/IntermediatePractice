@@ -10,9 +10,11 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("apply")
-public class ApplyExt extends Apply{
-
-    private String name;
-
+@TableName("loginmessage")
+public class UserLoginMessage {
+    private Integer id;
+    private String device;
+    private String ip;
+    private String uid;
+    private Date loginTime;
 }

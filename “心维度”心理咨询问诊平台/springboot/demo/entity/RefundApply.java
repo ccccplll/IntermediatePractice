@@ -10,9 +10,12 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("apply")
-public class ApplyExt extends Apply{
-
-    private String name;
-
+@TableName("refundapply")
+public class RefundApply {
+    Integer id;
+    Integer aid;
+    Integer uid;
+    String context;
+    Date submitTime;
+    String state;
 }

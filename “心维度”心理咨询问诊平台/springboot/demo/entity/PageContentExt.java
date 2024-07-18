@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TestExt extends Test{
+public class PageContentExt extends PageContent{
     private String name;
+    private String avatar;
 }

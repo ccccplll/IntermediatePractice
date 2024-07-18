@@ -10,12 +10,14 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("apply")
-public class Apply {
-
+@TableName("page")
+public class Page {
     private Integer id;
-    private String astate;
-    private Integer cid;
-    private Date date;
+    private Integer goodcount;
     private String image;
+    private String pagetxt;
+    private Date publishTime;
+    private String state;
+    private Integer txtcount;
+    private Integer uid;
 }
