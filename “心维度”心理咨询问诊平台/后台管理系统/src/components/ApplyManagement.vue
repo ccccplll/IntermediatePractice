@@ -61,13 +61,17 @@
           label="姓名"
           width="100">
         </el-table-column>
-		<el-table-column
-		      label="审核资料"
-		      width="100">
-		      <template slot-scope="scope">
-		        <img :src="scope.row.image" alt="审核资料" style="width: 50px; height: 50px; border-radius: 50%;">
-		      </template>
-		</el-table-column>
+		<el-table-column label="审核资料" width="100">
+		          <template slot-scope="scope">
+		            <el-image
+		              :src="scope.row.image"
+		              alt="审核资料"
+		              style="width: 50px; height: 50px; "
+		              :preview-src-list="[scope.row.image]"
+		              preview-teleported>
+		            </el-image>
+		          </template>
+		        </el-table-column>
         <el-table-column
           prop="astate"
           label="审核情况">
@@ -148,7 +152,26 @@ export default {
   mounted() {
 	  this.getApplysList();
     },
+	// computed: {
+ //    processedTableData() {
+ //      return this.tableData.map(item => {
+ //        if (item.images) {
+ //          return {
+ //            ...item,
+ //            imageList: item.images.split(','),
+ //          };
+ //        }
+	// 	console.log(item);
+ //        return item;
+ //      });
+	  
+ //    },
+ //  },
   methods: {
+	  printImageInfo(imgUrl) {
+	      console.log('当前图片信息:', imgUrl);
+	      // 可以根据需要打印或处理图片信息
+	    },
 	 onreset() {
 	      this. pageParam= {
 			    pageNum: 1,
@@ -180,6 +203,12 @@ export default {
 					
 					console.log(resultMap.applysList);
 	                this.tableData = resultMap.applysList;
+					
+					 this.tableData.forEach(item => {
+					        if (item.image) {
+					          console.log(`ID: ${item.id} 的图片信息：`, item.image);
+					        }
+					      });
 	                this.total = resultMap.total;
 					console.log(resultMap.total);
 	               })
@@ -228,3 +257,30 @@ export default {
 }
 
 </script>
+<style scoped>
+/* .el-card {
+  margin: 10px;
+  border-radius: 20px;
+  border-color: #c0c4cc;
+} */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.content p {
+  margin: 0;
+  font-size: 14px;
+  color: #606266;
+}
+.content p + p {
+  margin-top: 5px;
+}
+.el-image {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+}
+</style>

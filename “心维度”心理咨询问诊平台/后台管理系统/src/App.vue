@@ -112,7 +112,15 @@ import TestQuestionManagementVue from './components/TestQuestionManagement';
 import TestQuestionListVue from './components/TestQuestionList';
 import TestQuestionDetailVue from './components/TestQuestionDetail.vue';
 import UserDetailVue from './components/UserDetail.vue';
-//import LoginVue from './components/Login.vue';
+import PageListVue from './components/PageList';
+import PageDetailVue from './components/PageDetail';
+import CommentManagementVue from './components/CommentManagement';
+import BugManagementVue from './components/BugManagement';
+import EssayManagementVue from './components/EssayManagement';
+import UserLoginMessageManagementVue from './components/UserLoginMessageManagement';
+import loginVue from './components/login.vue';
+import TreeholeManagementVue from './components/TreeholeManagement';
+import RefundApplyManagementVue from './components/RefundApplyManagement';
 //import RegisterVue from './components/Register.vue';
 /*import AnnouncementManagementVue from './components/AnnouncementManagement';
 import CommentManagementVue from './components/CommentManagement';
@@ -143,15 +151,15 @@ export default {
 	TestQuestionListVue,
 	TestQuestionDetailVue,
 	UserDetailVue,
-	//LoginVue,
-	//RegisterVue
-	/*AnnouncementManagementVue,
+	PageListVue,
+	PageDetailVue,
 	CommentManagementVue,
-	DataManagementVue,
-	PersonInformationVue,
-	SystemManagementVue,
-	TestDataManagementVue,
-	*/
+	BugManagementVue,
+	EssayManagementVue,
+	UserLoginMessageManagementVue,
+	loginVue,
+	TreeholeManagementVue,
+	RefundApplyManagementVue,
   }
 }
 </script>

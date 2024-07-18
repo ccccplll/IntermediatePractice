@@ -18,7 +18,15 @@ import TestQuestionManagementVue from '../components/TestQuestionManagement';
 import TestQuestionListVue from '../components/TestQuestionList';
 import TestQuestionDetailVue from '../components/TestQuestionDetail';
 import UserDetailVue from '../components/UserDetail';
-//import LoginVue from '../components/Login'
+import PageListVue from '../components/PageList';
+import PageDetailVue from '../components/PageDetail';
+import CommentManagementVue from '../components/CommentManagement';
+import BugManagementVue from '../components/BugManagement';
+import EssayManagementVue from '../components/EssayManagement';
+import UserLoginMessageManagementVue from '../components/UserLoginMessageManagement';
+import loginVue from '../components/login';
+import TreeholeManagementVue from '../components/TreeholeManagement';
+import RefundApplyManagementVue from '../components/RefundApplyManagement';
 //import RegisterVue from '../components/Register'
 /*import AnnouncementManagementVue from '../components/AnnouncementManagement'
 import CommentManagementVue from '../components/CommentManagement'
@@ -105,11 +113,51 @@ export default new Router({
 		name: 'UserDetail',
 		component: UserDetailVue
 	},
-	/*{
-		path: '/LoginVue',
-		name: 'LoginVue',
-		component: LoginVue
+	{
+		path: '/PageList',
+		name: 'PageList',
+		component: PageListVue
+	},	
+	{
+	    path: '/page-detail/:id',
+		name: 'PageDetail',
+	    component: PageDetailVue,
 	},
+	{
+		path: '/CommentManagement',
+		name: 'CommentManagement',
+		component: CommentManagementVue
+	},
+	{
+		path: '/BugManagement',
+		name: 'BugManagement',
+		component: BugManagementVue
+	},
+	{
+		path: '/EssayManagement',
+		name: 'EssayManagement',
+		component: EssayManagementVue
+	},
+	{
+		path: '/UserLoginMessageManagement',
+		name: 'UserLoginMessageManagement',
+		component: UserLoginMessageManagementVue
+	},{
+		path: '/login',
+		name: 'login',
+		component: loginVue
+	},
+	{
+		path: '/TreeholeManagement',
+		name: 'TreeholeManagement',
+		component: TreeholeManagementVue
+	},
+	{
+		path: '/RefundApplyManagement',
+		name: 'RefundApplyManagement',
+		component: RefundApplyManagementVue
+	},
+	/*
 	{
 		path: '/Register',
 		name: 'Register',

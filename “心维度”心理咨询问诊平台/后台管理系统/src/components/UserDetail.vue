@@ -123,15 +123,15 @@ export default {
 	    },
 	getTestResults() {
 		  const queryParams = {
-
-		    id: this.$route.params.id,
-		    
+		    uid: this.$route.params.id,		   
+			// uid: 11,
 		    pageNum: this.pageNum,
 		    pageSize: this.pageSize,
 		  };
 		  axios.post('http://localhost:8081/Test/search', queryParams)
 		    .then(response => {
 		      let resultMap = response.data;
+			  console.log(response.data);
 		      this.tableData = resultMap.testsList.sort((a, b) => b.id - a.id); // 按 id 倒序排列
 		      this.total = resultMap.total;
 			  console.log(resultMap.total);
@@ -152,6 +152,10 @@ export default {
 		      const s = date.getSeconds();
 		      return `${y}-${m < 10 ? '0' + m : m}-${d < 10 ? '0' + d : d} ${h < 10 ? '0' + h : h}:${min < 10 ? '0' + min : min}:${s < 10 ? '0' + s : s}`;
 		    },
+		handleCurrentChange(page) {
+		    this.pageNum = page;
+		    this.getTestResults();
+		},
 	
   }
 };

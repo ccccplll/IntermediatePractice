@@ -43,15 +43,38 @@
 		              </el-menu-item-group>
 		  </el-submenu>
 
-          <el-menu-item index="/ApplyManagement">
+         <el-menu-item index="/UserLoginMessageManagement">
             <i class="el-icon-document"></i>
-            <span slot="title">审核管理</span>
+            <span slot="title">登录信息</span>
           </el-menu-item>
+		  <el-submenu>
+		              <template slot="title">
+		                <i class="el-icon-location"></i>
+		                <span>审核管理</span>
+		              </template>
+		              <el-menu-item-group>
+		                <el-menu-item index="/ApplyManagement">认证审核</el-menu-item>
+		  				<el-menu-item index="/EssayManagement">文章审核</el-menu-item>
+						<el-menu-item index="/RefundApplyManagement">退款审核</el-menu-item>
+		              </el-menu-item-group>
+		  </el-submenu>
           <el-menu-item index="/AppointmentManagement">
             <i class="el-icon-setting"></i>
             <span slot="title">预约管理</span>
           </el-menu-item>
-		  <el-submenu>
+		  <el-menu-item index="CommentManagement">
+		    <i class="el-icon-setting"></i>
+		    <span slot="title">咨询反馈</span>
+		  </el-menu-item>
+		  <el-menu-item index="/PageList">
+		    <i class="el-icon-setting"></i>
+		    <span slot="title">帖子管理</span>
+		  </el-menu-item>
+		  <el-menu-item index="TreeholeManagement">
+		    <i class="el-icon-setting"></i>
+		    <span slot="title">树洞管理</span>
+		  </el-menu-item>
+<!-- 		  <el-submenu>
 		              <template slot="title">
 		                <i class="el-icon-location"></i>
 		                <span>通知管理</span>
@@ -61,7 +84,7 @@
 		            
 						<el-menu-item index="/AdvertisingManagement">广告管理</el-menu-item>
 		              </el-menu-item-group>
-		  </el-submenu>
+		  </el-submenu> -->
 		  <el-submenu>
 		              <template slot="title">
 		                <i class="el-icon-location"></i>
@@ -72,6 +95,10 @@
 		                <el-menu-item index="/AddAnnouncement">添加公告</el-menu-item>
 		              </el-menu-item-group>
 		  </el-submenu>
+		  <el-menu-item index="/BugManagement">
+		    <i class="el-icon-setting"></i>
+		    <span slot="title">漏洞反馈</span>
+		  </el-menu-item>
           <el-menu-item index="/DataManagement">
             <i class="el-icon-setting"></i>
             <span slot="title">数据中心</span>

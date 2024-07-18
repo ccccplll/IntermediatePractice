@@ -32,6 +32,13 @@
           </el-select>
         </el-form-item>
 		
+		<el-cascader
+		    size="large"
+		    :options="pcTextArr"
+		    v-model="selectedOptions">
+		</el-cascader>
+
+		
 		<el-form-item label="性别" label-width="70px">
 		  <el-select clearable v-model="pageParam.sex" placeholder="请选择">
 		    <el-option
@@ -129,12 +136,17 @@
 
 <script>
 	import axios from 'axios'
+	import {
+		pcTextArr 
+	} from "element-china-area-data";
+
 export default {
   name: 'UserManagement',
   data () {
     return {
-      
-	   usersList: [],
+		pcTextArr,
+	    selectedOptions: [],     
+	    usersList: [],
 	        //分页设置
 	    pageParam: {
 			    pageNum: 1,
@@ -195,9 +207,20 @@ export default {
 	      this.getUsersList(); // 可选：重置后重新查询数据
 	},
 	getUsersList() {
+		let selectedCity;
+		if (this.selectedOptions[0] && this.selectedOptions[0].endsWith('市')) {
+		  selectedCity = this.selectedOptions[0].replace(/市$/, '');
+		} else if(this.selectedOptions[1] && this.selectedOptions[1].endsWith('市')){
+		  selectedCity = this.selectedOptions[1].replace(/市$/, '');
+		}else{
+			selectedCity= null;
+		}
+		// console.log(this.selectedOptions[0] && this.selectedOptions[0].endsWith('市'))
+		// console.log(this.selectedOptions[0].endsWith('市'))
+		console.log(selectedCity)
 		const queryParams = {
 		name: this.pageParam.name,
-		address: this.pageParam.address,
+		city: this.selectedCity,
 		age: this.pageParam.age,
 		pageNum: this.pageParam.pageNum,
 		pageSize: this.pageParam.pageSize,
@@ -206,6 +229,7 @@ export default {
 		};
 	       axios.post('http://localhost:8081/User/search',queryParams)
 	               .then(response => {
+					console.log(this.pageParam.pageNum)
 					console.log(this.pageParam.pageNum)
 					console.log(response.data);
 	                let resultMap = response.data;

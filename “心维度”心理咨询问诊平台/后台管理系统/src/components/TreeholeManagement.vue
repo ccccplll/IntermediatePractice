@@ -3,34 +3,43 @@
     <!-- 面包屑导航 -->
     <el-breadcrumb separator="/" style="padding-left: 10px;padding-bottom: 10px;font-size: 12px">
       <el-breadcrumb-item :to="{ path: '/main' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>咨询反馈</el-breadcrumb-item>
+      <el-breadcrumb-item>树洞管理</el-breadcrumb-item>
     </el-breadcrumb>
 
     <!-- 用户列表卡片 -->
     <el-card class="box-card">
       <el-form :inline="true" :model="pageParam" class="demo-form-inline">
-        <el-form-item label="咨询师姓名" label-width="90px">
-          <el-input clearable v-model="pageParam.cname" placeholder="请输入咨询师姓名"></el-input>
-        </el-form-item>
-		<el-form-item label="用户昵称" label-width="90px">
-		  <el-input clearable v-model="pageParam.uname" placeholder="请输入咨询者昵称"></el-input>
-		</el-form-item>		
-
+ 
+		<el-form-item label="状态" label-width="70px">
+		  <el-select clearable v-model="pageParam.state" placeholder="请选择">
+		    <el-option
+		      v-for="item in states"
+		      :key="item.value"
+		      :label="item.label"
+		      :value="item.value">
+		      <span style="float: left">{{ item.label }}</span>
+		      <span style="float: right; color: #8492a6; font-size: 13px">{{ item.value }}</span>
+		    </el-option>
+		  </el-select>
+		</el-form-item>
         <el-form-item style="margin-left: 10px">
           <el-button icon="el-icon-refresh" @click="onreset">重置</el-button>
-          <el-button type="primary" icon="el-icon-search" @click="getCommentsList">查询</el-button>
-          <el-button type="success" icon="el-icon-plus">添加</el-button>
-          <el-button type="warning" icon="el-icon-download">导出</el-button>
+          <el-button type="primary" icon="el-icon-search" @click="getTreeholesList">查询</el-button>
         </el-form-item>
       </el-form>
       <!-- 表格内容显示区域   -->
       <el-table :data="tableData"
         border
-        style="width: 100%; height: 400px">
+        style="width: 100%; height: 800px">
         <el-table-column
           prop="uname"
           label="咨询者昵称"
           width="100">
+        </el-table-column>
+		<el-table-column
+          prop="send"
+          label="发信"
+          width="500">
         </el-table-column>
         <el-table-column
           prop="cname"
@@ -38,25 +47,14 @@
           width="100">
         </el-table-column>
 		<el-table-column
-          prop="content"
-          label="内容"
+          prop="receive"
+          label="回信"
           width="500">
         </el-table-column>
-		<el-table-column
-		  prop="score"
-		  label="得分"
-		  width="80">
-		</el-table-column>
-		<el-table-column width="100"
-		          prop="time"
-		          label="时间"
-		          :formatter="formatTime">
-		        </el-table-column>
-
       </el-table>
      <el-pagination
         style="padding-top: 15px"
-        @size-change="getCommentsList"
+        @size-change="getTreeholesList"
         @current-change="handleCurrentChange"
         :page-size.sync="pageParam.pageSize"
         :current-page.sync="pageParam.pageNum"
@@ -75,21 +73,27 @@
 	import { DatePicker } from 'element-ui';
 	import axios from 'axios'
 export default {
-  name: 'CommentManagement',
+  name: 'TreeholeManagement',
   components: {
           'el-date-picker': DatePicker,
         },
   data () {
     return {
+		states:[{
+				  value:'未回信',
+				  label:'未回信'
+		},{
+				  value:'已回信',
+				  label:'已回信'
+		}],
 		 form: {
 		        date: '',
 		      },	   
 	        //分页设置
 	    pageParam: {
 			    pageNum: 1,
-				pageSize: 4,			
-	            uname: null,
-			    cname: null,
+				pageSize: 4,	
+				state:null,
 	          },
 	  total: 0,//总条目数
       pageSizes: [4, 8, 10, 15],//每页显示条目数列表
@@ -98,34 +102,32 @@ export default {
     }
   },
   mounted() {
-	  this.getCommentsList();
+	  this.getTreeholesList();
     },
   methods: {
 	 onreset() {
 	      this. pageParam= {
-			    pageNum:1,
-	            pageSize: 4,
-	            uname: null,
-			    cname: null,				
+			    pageNum: 1,
+				pageSize: 4,	
+				state:null,				
 	          };
 		
-	      this.getCommentsList(); // 可选：重置后重新查询数据
+	      this.getTreeholesList(); // 可选：重置后重新查询数据
 	},
-	getCommentsList() {
+	getTreeholesList() {
 		const queryParams = {
-		uname: this.pageParam.uname,
-		cname: this.pageParam.cname,
+		state: this.pageParam.state,
 		pageNum: this.pageParam.pageNum,
 		pageSize: this.pageParam.pageSize,
 		};
-	       axios.post('http://localhost:8081/Comment/search',queryParams)
+	       axios.post('http://localhost:8081/Treehole/search',queryParams)
 	               .then(response => {
 					console.log(this.pageParam.pageNum)
 					console.log(response.data);
 	                let resultMap = response.data;
 					
 					console.log(resultMap.data);
-	                this.tableData = resultMap.commentsList;
+	                this.tableData = resultMap.treeholesList;
 	                this.total = resultMap.total;
 					console.log(resultMap.total);
 	               })
@@ -135,19 +137,7 @@ export default {
 	},
 	handleCurrentChange(page) {
 	    this.pageParam.pageNum = page;
-	    this.getCommentsList();
-	},
-	handleDelete(index, row) {
-		const uid = row.id;
-	      axios.post(`http://localhost:8081/Comment/delete/${uid}`)
-	        .then(response => {
-	          this.tableData.splice(index, 1);
-	          this.total--;
-	          console.log('User deleted:', row);
-	        })
-	        .catch(err => {
-	          alert(err);
-	        });
+	    this.getTreeholesList();
 	},
     onSubmit () {
       console.log('submit!')
@@ -155,17 +145,6 @@ export default {
     handleSizeChange (val) {
       console.log(`每页 ${val} 条`)
     },
-	formatTime(row, column, cellValue) {
-	      if (!cellValue) return '';
-	      const date = new Date(cellValue);
-	      const y = date.getFullYear();
-	      const m = date.getMonth() + 1;
-	      const d = date.getDate();
-	      const h = date.getHours();
-	      const min = date.getMinutes();
-	      const s = date.getSeconds();
-	      return `${y}-${m < 10 ? '0' + m : m}-${d < 10 ? '0' + d : d} ${h < 10 ? '0' + h : h}:${min < 10 ? '0' + min : min}:${s < 10 ? '0' + s : s}`;
-	},
   }
 }
 
