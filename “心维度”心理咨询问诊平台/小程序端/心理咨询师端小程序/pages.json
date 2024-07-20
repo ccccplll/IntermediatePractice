@@ -1,0 +1,262 @@
+{
+	"pages":[ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path" : "pages/login/login",
+			"style" : 
+			{
+				"navigationBarTitleText" : "‘心维度’咨询师端"
+			}
+		},
+		
+		{
+			"path": "pages/MainPage/MainPage",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"enablePullDownRefresh": true
+			}
+		},
+		
+		{
+			"path": "pages/item/item",
+			"style": {
+				"navigationBarTitleText": "订单",
+				"enablePullDownRefresh": true
+			}
+		},
+
+
+		{
+			"path": "pages/addAppoint/addAppoint",
+			"style":
+			{
+				"navigationBarTitleText": "发布预约"
+				
+			}
+		},
+			
+			
+			
+		{
+			"path" : "pages/account/account",
+			"style" : 
+			{
+				"navigationBarTitleText" : "我的",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path" : "pages/certification/certification",
+			"style" : 
+			{
+				"navigationBarTitleText" : "资格认证"
+			}
+		},
+		{
+			"path" : "pages/UserProfile/UserProfile",
+			"style" : 
+			{
+				"navigationBarTitleText" : "个人信息"
+			}
+		},
+		{
+			"path" : "pages/editProFile/editProFile",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/editProFile/editName/editName",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/editProFile/editavatar/editavatar",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/editProFile/editCity/editCity",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/editProFile/editPhonenumber/editPhonenumber",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/editProFile/editInfo/editInfo",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/orderDetail/orderDetail",
+			"style" : 
+			{
+				"navigationBarTitleText" : "订单详情"
+			}
+		},
+		{
+			"path" : "pages/Register/Register",
+			"style" : 
+			{
+				"navigationBarTitleText" : "注册咨询者账号"
+			}
+		},
+		{
+			"path" : "pages/essay/essay",
+			"style" : 
+			{
+				"navigationBarTitleText" : "文章中心",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path" : "pages/myData/myData",
+			"style" : 
+			{
+				"navigationBarTitleText" : "数据中心"
+			}
+		},
+		{
+			"path" : "pages/money/money",
+			"style" : 
+			{
+				"navigationBarTitleText" : "收益中心",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/community/community",
+			"style": {
+				"navigationBarTitleText": "社区",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/aboutUs/aboutUs",
+			"style": {
+				"navigationBarTitleText": "关于我们"			}
+		},
+		{
+			"path": "pages/response/response",
+			"style": {
+				"navigationBarTitleText": "意见反馈"
+			}
+		},
+		{
+			"path" : "pages/essayDetail/essayDetail",
+			"style" : 
+			{
+				"navigationBarTitleText" : "文章详情"
+			}
+		},
+		{
+			"path" : "pages/SetUp/SetUp",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/post/post",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/myessay/myessay",
+			"style" : 
+			{
+				"navigationBarTitleText" : "我的文章"
+			}
+		},
+		{
+			"path" : "pages/messageList/messageList",
+			"style" : 
+			{
+				"navigationBarTitleText" : "消息列表",
+	        	"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/tree/tree",
+			"style": {
+				"navigationBarTitleText": "树洞来信",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/addEssay/addEssay",
+			"style": {
+				"navigationBarTitleText": "发布文章"
+			}
+		},
+		{
+			"path" : "pages/plane/plane",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "预约",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#3cc51f",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+	    "position": "bottom",
+		"list": [
+			{
+				"pagePath": "pages/MainPage/MainPage",
+				"iconPath": "static/mainpg.png",
+				"selectedIconPath": "static/mainpg1.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/messageList/messageList",
+				"iconPath": "static/sheqv.png",
+				"selectedIconPath": "static/sheqv1.png",
+				"text": "消息"
+			},
+			{
+				"pagePath": "pages/essay/essay",
+				"iconPath": "static/add.png",
+				"selectedIconPath": "static/add1.png",
+				"text": "文章"
+			},
+			{
+				"pagePath": "pages/item/item",
+				"iconPath": "static/caidan.png",
+				"selectedIconPath": "static/caidan1.png",
+				"text": "订单"
+			},
+		{
+			"pagePath": "pages/account/account",
+			"iconPath": "static/user.png",
+			"selectedIconPath": "static/user1.png",
+			"text": "我的"
+		}]
+	}
+	
+}
+
+
